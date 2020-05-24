@@ -101,22 +101,18 @@ let validarMoto = (moto) => {
   };
 
   let actualizarMoto = async (moto, placa) => {
-    let _service = new ServicioPG();
-    let sql = `UPDATE motos SET
-                  estado = $1,
-                   clase = $2,
-                   marca = $3,
-                   modelo = $4,
-                   color = $5,
-                   cilindraje = $6,
-                   id_propietario = $7,
-                   nro_soat = $8,
-                   vencimiento_soat = $9,
-                   nro_tecnomecanica = $10,
-                   vencimiento_tecnomecanica = $11,
-                   WHERE placa= $12`; 
-    let values = [
-      moto.estado,
+  if (moto.placa != placa) {
+    throw {
+      ok: false,
+      mensaje: "La placa de la moto no corresponde al enviado",
+    };
+  }
+  let _servicio = new ServicioPG();
+  let sql =
+    "UPDATE public.motos set estado =$1," +
+    "clase =$2, marca =$3, modelo =$4, color =$5, cilindraje =$6, id_propietario =$7, nro_soat =$8, vencimiento_soat =$9, nro_tecnomecanica =$10, vencimiento_tecnomecanica =$11 WHERE placa = $12;";
+  let valores = [
+    moto.estado,
       moto.clase,
       moto.marca,
       moto.modelo,
@@ -128,10 +124,12 @@ let validarMoto = (moto) => {
       moto.nro_tecnomecanica,
       moto.vencimiento_tecnomecanica,
       placa,
-    ];
-    let respuesta = await _service.ejecutarSql(sql, values);
-    return respuesta;
-  };
+  ];
+  let respuesta = await _servicio.ejecutarSql(sql, valores);
+
+  return respuesta;
+};
+
 
   let eliminarMoto = (placa) => {
     let _service = new ServicePG();

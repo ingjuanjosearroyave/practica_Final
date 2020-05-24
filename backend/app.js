@@ -16,6 +16,9 @@ const vs = "/api/v1/";
 const ruta_motos = require("./routes/motos");
 app.use(vs,ruta_motos);
 
+const ruta_mantenimientos = require("./routes/mantenimiento");
+app.use(vs,ruta_mantenimientos);
+
 //Puerto
 const port = process.env.PORT || 3001;
 
