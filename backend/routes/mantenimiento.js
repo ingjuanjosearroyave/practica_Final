@@ -25,6 +25,74 @@ router.get("/mantenimientos/:id", (req, res) => {
         .catch(error => {
             res.send(error);
         });
-});    
+});
+
+router.post("/mantenimientos", (req, res) => {
+    try {
+        let info_mantenimiento = req.body;
+
+        validarMantenimiento(info_mantenimiento);
+
+        guardarMantenimiento(info_mantenimiento)
+            .then((answerDB) => {
+                res.send({
+                    ok: true,
+                    mensaje: "mantenimiento guardado",
+                    info: info_mantenimiento,
+                });
+            })
+            .catch((error) => {
+                res.send(error);
+            });
+
+        // Responder
+    } catch (error) {
+        res.send(error);
+    }
+});
+
+router.delete("/mantenimientos", (req, res) => {
+    try {
+        //Capturar el body desde la solicitud
+        let info_mantenimiento = req.body;
+
+        eliminarMantenimiento(info_mantenimiento)
+            .then((answerDB) => {
+                res.send({
+                    ok: true,
+                    mensaje: "Mantenimiento eliminado",
+                    info: info_mantenimiento,
+                });
+            })
+            .catch((error) => {
+                res.send(error);
+            });
+
+        // Responder
+    } catch (error) {
+        res.send(error);
+    }
+});
+
+router.put("/mantenimientos", (req, res) => {
+    try {
+      let info_mantenimiento = req.body;
+      actualizarMantenimiento(info_mantenimiento)
+        .then((answerDB) => {
+          res.send({
+            ok: true,
+            mensaje: "Mantenimiento Actualizado",
+            info: info_mantenimiento,
+          });
+        })
+        .catch((error) => {
+          res.send(error);
+        });
+  
+      // Responder
+    } catch (error) {
+      res.send(error);
+    }
+  });
 
 module.exports = router; 

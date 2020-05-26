@@ -132,10 +132,10 @@ let validarMoto = (moto) => {
 
 
   let eliminarMoto = (placa) => {
-    let _service = new ServicePG();
+    let _service = new ServicioPG();
     let sql = `DELETE FROM motos WHERE placa = $1`;
     let values = [placa];
-    let respuesta = _service.runSql(sql, values);
+    let respuesta = _service.ejecutarSql(sql, values);
     return respuesta;
   };
 
