@@ -53,7 +53,6 @@ router.post("/mantenimientos", (req, res) => {
 
 router.delete("/mantenimientos", (req, res) => {
     try {
-        //Capturar el body desde la solicitud
         let info_mantenimiento = req.body;
 
         eliminarMantenimiento(info_mantenimiento)

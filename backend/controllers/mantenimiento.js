@@ -10,7 +10,7 @@ let consultarMantenimientos = async () => {
 
 let consultarMantenimiento = async (id) => {
   let _service = new ServicioPG();
-  let sql = `SELECT * FROM mantenimientos WHERE id = '${id}'`;
+  let sql = `SELECT * FROM mantenimientos WHERE id_mecanico = '${id}'`;
   let respuesta = await _service.ejecutarSql(sql);
   return respuesta;
 };
@@ -57,12 +57,8 @@ let guardarMantenimiento = async (mantenimiento) => {
 
 let eliminarMantenimiento = (mantenimiento) => {
   let _service = new ServicioPG();
-  let sql = `DELETE FROM mantenimientos WHERE id_mecanico = $1 AND placa = $2 AND fecha = $3`;
-  let values = [
-    mantenimiento.id_mecanico,
-    mantenimiento.placa,
-    mantenimiento.fecha,
-  ];
+  let sql = `DELETE FROM mantenimientos WHERE placa = $1`;
+  let values = [id];
   let respuesta = _service.ejecutarSql(sql, values);
   return respuesta;
 };
@@ -76,22 +72,17 @@ let actualizarMantenimiento = async (mantenimiento) => {
   }
   let _service = new ServicioPG();
   let sql = "UPDATE public.mantenimientos set id_mecanico = $1"+
-  "  placa = $2,fecha = $3,trabajos_realizados = $4, horas_invertidas = $5 where id_mecanico = $6 AND placa = $7 AND fecha = $8";
+  "placa = $2,fecha = $3,trabajos_realizados = $4, horas_invertidas = $5 where placa = $6 ";
   let values = [
     mantenimiento.id_mecanico,
     mantenimiento.placa,
     mantenimiento.fecha,
     mantenimiento.trabajos_realizados,
     mantenimiento.horas_invertidas,
-    mantenimiento.id_mecanico_temp,
-    mantenimiento.placa_temp,
-    mantenimiento.fecha_temp,
+    placa
   ];
   let respuesta = await _service.ejecutarSql(sql, values);
   return respuesta;
 };
-
-
-
 
 module.exports = { consultarMantenimientos, consultarMantenimiento, validarMantenimiento, guardarMantenimiento, eliminarMantenimiento, actualizarMantenimiento };

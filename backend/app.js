@@ -13,11 +13,20 @@ app.get("/", (req, res) => {
 
 const vs = "/api/v1/";
 
+const ruta_login = require("./routes/autenticacion");
+app.use(vs,ruta_login);
+
 const ruta_motos = require("./routes/motos");
 app.use(vs,ruta_motos);
 
 const ruta_mantenimientos = require("./routes/mantenimiento");
 app.use(vs,ruta_mantenimientos);
+
+const ruta_Roles = require("./routes/roles");
+app.use(vs,ruta_Roles);
+
+const ruta_usuarios = require("./routes/usuarios");
+app.use(vs,ruta_usuarios);
 
 //Puerto
 const port = process.env.PORT || 3001;
