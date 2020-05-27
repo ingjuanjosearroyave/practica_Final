@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const _controlador = require("../controllers/autenticacion");
-
+/*
 router.use((req, res, next) => {
   try {
     let url = req.url;
@@ -66,6 +66,6 @@ router.get("/verify", (req, res) => {
       mensaje: "No autenticado.",
     });
   }
-});
+});*/
 
 module.exports = router;

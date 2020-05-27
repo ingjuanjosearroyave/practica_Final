@@ -1,8 +1,8 @@
 <template>
   <div>
     <br />
-    <b-container class="bv-example-row mb-3">
-      <b-row>
+    <b-container>
+      <b-row cols="1">
         <b-col>
           <!--FORMULARIO DE USUARIOS-->
           <br />
@@ -15,6 +15,7 @@
                 <b-form-input
                   class="form-control"
                   type="text"
+                  v-model="motos.placa"
                   required
                   placeholder="Ingrese Placa"
                   id="id"
@@ -26,9 +27,10 @@
                 <b-form-input
                   class="form-control"
                   type="text"
+                  v-model="motos.estado"
                   required
                   placeholder="Ingrese el estado"
-                  id="id"
+                  id="estado"
                 />
                 <b-form-invalid-feedback :state="validacionEstado"></b-form-invalid-feedback>
               </b-form-group>
@@ -37,9 +39,10 @@
                 <b-form-input
                   class="form-control"
                   type="text"
+                  v-model="motos.clase"
                   required
                   placeholder="Ingrese la Clase"
-                  id="id"
+                  id="clase"
                 />
                 <b-form-invalid-feedback :state="validacionClase"></b-form-invalid-feedback>
               </b-form-group>
@@ -48,9 +51,10 @@
                 <b-form-input
                   class="form-control"
                   type="text"
+                  v-model="motos.marca"
                   required
                   placeholder="Ingrese la Marca"
-                  id="id"
+                  id="marca"
                 />
                 <b-form-invalid-feedback :state="validacionMarca"></b-form-invalid-feedback>
               </b-form-group>
@@ -59,9 +63,10 @@
                 <b-form-input
                   class="form-control"
                   type="text"
+                  v-model="motos.modelo"
                   required
                   placeholder="Ingrese el Modelo"
-                  id="id"
+                  id="modelo"
                 />
                 <b-form-invalid-feedback :state="validacionModelo"></b-form-invalid-feedback>
               </b-form-group>
@@ -70,9 +75,10 @@
                 <b-form-input
                   class="form-control"
                   type="text"
+                  v-model="motos.color"
                   required
                   placeholder="Ingrese el Color"
-                  id="id"
+                  id="color"
                 />
                 <b-form-invalid-feedback :state="validacionColor"></b-form-invalid-feedback>
               </b-form-group>
@@ -81,20 +87,22 @@
                 <b-form-input
                   class="form-control"
                   type="text"
+                  v-model="motos.cilindraje"
                   required
                   placeholder="Ingrese el Ciliindraje"
-                  id="id"
+                  id="cilindraje"
                 />
                 <b-form-invalid-feedback :state="validacionCilindraje"></b-form-invalid-feedback>
               </b-form-group>
 
-              <b-form-group label="Propiestario" label-for="id">
+              <b-form-group label="Propietario" label-for="id">
                 <b-form-input
                   class="form-control"
-                  type="number"
+                  type="text"
+                  v-model="motos.id_propietario"
                   required
                   placeholder="Ingrese el Id Propietario"
-                  id="id"
+                  id="id_propietario"
                 />
                 <b-form-invalid-feedback :state="validacionIdPropietario"></b-form-invalid-feedback>
               </b-form-group>
@@ -102,10 +110,11 @@
                <b-form-group label="Nro. Soat" label-for="id">
                 <b-form-input
                   class="form-control"
-                  type="number"
+                  type="text"
+                  v-model="motos.nro_soat"
                   required
                   placeholder="Ingrese el Número del Soat"
-                  id="id"
+                  id="nro_soat"
                 />
                 <b-form-invalid-feedback :state="validacionNSoat"></b-form-invalid-feedback>
               </b-form-group>
@@ -114,9 +123,10 @@
                 <b-form-input
                   class="form-control"
                   type="text"
+                  v-model="motos.vencimiento_soat"
                   required
                   placeholder="aaaa/mm/dd"
-                  id="id"
+                  id="vencimiento_soat"
                 />
                 <b-form-invalid-feedback :state="validacionVencimientoSoat"></b-form-invalid-feedback>
               </b-form-group>
@@ -124,10 +134,11 @@
               <b-form-group label="Nro. Tecnomecanica" label-for="id">
                 <b-form-input
                   class="form-control"
-                  type="number"
+                  type="text"
+                  v-model="motos.nro_tecnomecanica"
                   required
                   placeholder="Ingrese el Númer de la Tecnomecanica"
-                  id="id"
+                  id="nro_tecnomecanica"
                 />
                 <b-form-invalid-feedback :state="validacionNTecnomecanica"></b-form-invalid-feedback>
               </b-form-group>
@@ -136,11 +147,12 @@
                 <b-form-input
                   class="form-control"
                   type="text"
+                  v-model="motos.vencimiento_tecnomecanica"
                   required
                   placeholder="aaaa/mm/dd"
-                  id="id"
+                  id="vencimiento_tecnomecanica"
                 />
-                <b-form-invalid-feedback :state="validacionVencimientoSoat"></b-form-invalid-feedback>
+                <b-form-invalid-feedback :state="validacionVencimientoTecno"></b-form-invalid-feedback>
               </b-form-group>
 
 
@@ -156,7 +168,7 @@
             striped
             responsive
             hover
-            :items="lista_seguimiento"
+            :items="lista_motos"
             class="border border-primary text-center"
           >
             <template v-slot:cell(acciones)="row">
@@ -188,3 +200,6 @@
     </b-container>
   </div>
 </template>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../assets/motos.js"/>
