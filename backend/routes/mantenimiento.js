@@ -51,7 +51,7 @@ router.post("/mantenimientos", (req, res) => {
     }
 });
 
-router.delete("/mantenimientos", (req, res) => {
+router.delete("/mantenimientos/:id", (req, res) => {
     try {
         let info_mantenimiento = req.body;
 
@@ -73,7 +73,7 @@ router.delete("/mantenimientos", (req, res) => {
     }
 });
 
-router.put("/mantenimientos", (req, res) => {
+router.put("/mantenimientos/:id", (req, res) => {
     try {
       let info_mantenimiento = req.body;
       actualizarMantenimiento(info_mantenimiento)
@@ -87,8 +87,6 @@ router.put("/mantenimientos", (req, res) => {
         .catch((error) => {
           res.send(error);
         });
-  
-      // Responder
     } catch (error) {
       res.send(error);
     }

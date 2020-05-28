@@ -57,7 +57,7 @@ let guardarMantenimiento = async (mantenimiento) => {
 
 let eliminarMantenimiento = (mantenimiento) => {
   let _service = new ServicioPG();
-  let sql = `DELETE FROM mantenimientos WHERE placa = $1`;
+  let sql = `DELETE FROM public.mantenimientos WHERE public.placa = $1`;
   let values = [id];
   let respuesta = _service.ejecutarSql(sql, values);
   return respuesta;
