@@ -2,11 +2,11 @@
   <div>
     <br />
     <b-container>
-      <b-row cols="1">
+      <b-row cols="2">
         <b-col>
           <!--FORMULARIO DE USUARIOS-->
           <br />
-          <b-card title="motos">
+          <b-card title="Registro de Motos">
             <b-card-text>En el taller de motos:</b-card-text>
 
             <b-form action="javascript:void(0)" @submit="crearMoto()">

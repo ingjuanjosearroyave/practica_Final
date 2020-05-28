@@ -25,7 +25,7 @@
                 <b-form-invalid-feedback :state="validar_Clave"
                 >Campo obligatorio</b-form-invalid-feedback>
               </b-form-group>
-              <b-button type="submit" variant="outline-danger" href="/mantenimientos">Ingresar</b-button>
+              <b-button type="submit" variant="outline-danger" href="/home">Ingresar</b-button>
             </b-form>
           </b-card>
         </b-col>

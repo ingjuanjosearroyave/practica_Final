@@ -6,7 +6,7 @@
         <b-col>
           <!--FORMULARIO DE USUARIOS-->
           <br />
-          <b-card title="mantenimientos">
+          <b-card title="Gestión de Mantenimientos">
             <b-card-text>En el taller de mantenimientos:</b-card-text>
 
             <b-form action="javascript:void(0)" @submit="crearMantenimiento()">
