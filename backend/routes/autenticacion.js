@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const _controller = require("../controllers/autenticacion");
 
+/*
 router.use((req, res, next) => {
   try {
     let url = req.url;
@@ -15,7 +16,7 @@ router.use((req, res, next) => {
   } catch (error) {
     res.status(401).send({ ok: false, info: error, message: "No autenticado" });
   }
-});
+});*/
 
 router.post("/login", (req, res) => {
   try {
@@ -49,6 +50,7 @@ router.post("/login", (req, res) => {
   }
 });
 
+/*
 router.get("/verificar", (req, res) => {
   try {
     let token = req.headers.token;
@@ -98,6 +100,6 @@ router.post("/verificar", (req, res) => {
   } catch (error) {
     res.status(400).send(error);
   }
-});
+});*/
 
 module.exports = router;

@@ -93,7 +93,7 @@ export default {
         crearMoto() {
             if (this.validacion == true) {
                 axios
-                    .post("http://127.0.0.1:3001/api/v1/motos", this.motos)
+                    .post("http://127.0.0.1:3001/api/v1/motos", this.motos, { headers: { token: this.token } })
                     .then(response => {
                         this.lista_motos.push(response.data.info);
                         this.motos = {
@@ -137,7 +137,7 @@ export default {
         },
         cargarMotos({ item }) {
             axios
-                .get(`http://127.0.0.1:3001/api/v1/motos/${item.placa}`)
+                .get(`http://127.0.0.1:3001/api/v1/motos/${item.placa}`,{ headers: { token: this.token } })
                 .then(response => {
                     var array = response.data.info;
 
@@ -166,7 +166,7 @@ export default {
                 axios
                     .put(
                         `http://127.0.0.1:3001/api/v1/motos/${this.motos.placa}`,
-                        this.motos
+                        this.motos, { headers: { token: this.token } }
                     )
                     .then(response => {
                         let posicion = this.lista_motos.findIndex(
