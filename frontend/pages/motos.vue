@@ -1,7 +1,7 @@
 <template>
   <div>
     <br />
-    <b-container>
+     <b-container>
       <b-row cols="2">
         <b-col>
           <!--FORMULARIO DE USUARIOS-->
@@ -168,17 +168,17 @@
             striped
             responsive
             hover
+            head-variant="dark"
             :items="lista_motos"
-            class="border border-primary text-center"
+           class="border border-primary text-center"
           >
             <template v-slot:cell(acciones)="row">
               <b-button
                 size="sm"
                 @click="cargarMotos(row)"
                 class="mr-2"
-                variant="outline-primary"
-              >
-                <b-img width="20" height="20"></b-img>Modificar
+                variant="primary"
+              >Modificar
               </b-button>
               <br />
               <br />
@@ -186,9 +186,8 @@
                 size="sm"
                 @click="eliminarMoto(row)"
                 class="mr-2"
-                variant="outline-danger"
-              >
-                <b-img left width="20" height="20"></b-img>Eliminar
+                variant="danger"
+              >Eliminar
               </b-button>
               <br />
             </template>

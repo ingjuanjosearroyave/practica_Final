@@ -1,14 +1,15 @@
 <template>
   <div>
     <br />
-    <b-container class="bv-example-row mb-3">
-      <b-row cols="3">
+    <b-container>
+      <b-row cols="2">
         <b-col>
           <!--FORMULARIO DE USUARIOS-->
           <br />
-          <b-card title="Gestión de Usuarios">
-            <b-card-text>En el taller de motos:</b-card-text>
-
+          <b-card title="Gestión de Usuarios"><b-img left alt="image" src="@/static/images/car-lights.png" width="80" height="80"></b-img>
+            <b-card-text>a continuación complete todos los campos para registrar un usuario:</b-card-text>
+            <br>
+            <br>
             <b-form action="javascript:void(0)" @submit="crearUsuario()">
               <b-form-group label="Tipo Documento">
                 <b-form-select v-model="usuarios.tipo_documento" class="mb-3"  :options="opciones_documentos"></b-form-select>
@@ -92,7 +93,7 @@
                 <b-form-invalid-feedback :state="validacionClave"></b-form-invalid-feedback>
               </b-form-group>
 
-              <b-button type="submit" variant="warning" v-if="!enEdicion">Crear Usuario</b-button>
+              <b-button type="submit" variant="dark" v-if="!enEdicion">Crear Usuario</b-button>
               <b-button @click="actualizarUsuario()" variant="primary" v-else>Actualizar</b-button>
             </b-form>
           </b-card>
@@ -100,15 +101,17 @@
         <!--COLUMNA DE Acciones-->
         <b-col>
           <br />
-          <b-table hover :items="lista_usuarios" class="border border-warning text-center">
+          <b-table  striped
+            responsive
+            hover
+            head-variant="dark" :items="lista_usuarios" class="border border-primary text-center">
             <template v-slot:cell(acciones)="row">
               <b-button
                 size="sm"
                 @click="cargarUsuario(row)"
                 class="mr-2"
-                variant="outline-primary"
-              >
-                <b-img width="20" height="20"></b-img>Modificar
+                variant="primary"
+              >Modificar
               </b-button>
               <br />
               <br />
@@ -116,9 +119,8 @@
                 size="sm"
                 @click="eliminarUsuario(row)"
                 class="mr-2"
-                variant="outline-danger"
-              >
-                <b-img left width="20" height="20"></b-img>Eliminar
+                variant="danger"
+              >Eliminar
               </b-button>
               <br />
             </template>

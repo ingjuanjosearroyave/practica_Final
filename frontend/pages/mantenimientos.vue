@@ -1,8 +1,8 @@
 <template>
   <div>
     <br />
-    <b-container class="bv-example-row mb-3">
-      <b-row>
+    <b-container>
+      <b-row cols="2">
         <b-col>
           <!--FORMULARIO DE USUARIOS-->
           <br />
@@ -85,6 +85,7 @@
             striped
             responsive
             hover
+            head-variant="dark"
             :items="lista_mantenimientos"
             class="border border-primary text-center"
           >
@@ -93,9 +94,8 @@
                 size="sm"
                 @click="cargarMantenimiento(row)"
                 class="mr-2"
-                variant="outline-primary"
-              >
-                <b-img width="20" height="20"></b-img>Modificar
+                variant="primary"
+              >Modificar
               </b-button>
               <br />
               <br />
@@ -103,9 +103,8 @@
                 size="sm"
                 @click="eliminarMantenimiento(row)"
                 class="mr-2"
-                variant="outline-danger"
-              >
-                <b-img left width="20" height="20"></b-img>Eliminar
+                variant="danger"
+              >Eliminar
               </b-button>
               <br />
             </template>

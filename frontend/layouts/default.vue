@@ -1,9 +1,9 @@
 <template>
   <div>
     <div>
-      <b-navbar toggleable="lg" type="dark" variant="dark">
+      <b-navbar toggleable="lg" type="dark" variant="secondary">
         <b-navbar-brand href=".">
-          <b-img left src="@/static/images/motos.jpg" width="220" height="60"></b-img>
+          <b-img left src="@/static/images/logoMotos.png" width="350" height="70"></b-img>
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
