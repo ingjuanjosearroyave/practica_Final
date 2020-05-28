@@ -112,7 +112,7 @@ export default {
                             acciones: true
                         };
                         alert("Moto Registrada Correctamente");
-                        location.reload();
+                        //location.reload();
                     })
                     .catch(error => {
                         console.log(error);
@@ -190,7 +190,7 @@ export default {
                             acciones: true
                         };
                         alert("Moto Actualizada Correctamente");
-                        location.reload();
+                        //location.reload();
                     })
                     .catch(error => {
                         console.log(error);
