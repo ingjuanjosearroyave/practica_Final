@@ -15,6 +15,7 @@
                 <b-form-input
                   class="form-control"
                   type="text"
+                  v-model="mantenimientos.placa"
                   required
                   placeholder="Ingrese Placa"
                   id="id"
@@ -22,21 +23,12 @@
                 <b-form-invalid-feedback :state="validacionPlaca"></b-form-invalid-feedback>
               </b-form-group>
 
-               <b-form-group label="Placa" label-for="id">
-                <b-form-input
-                  class="form-control"
-                  type="text"
-                  required
-                  placeholder="Ingrese Placa"
-                  id="id"
-                />
-                <b-form-invalid-feedback :state="validacionPlaca"></b-form-invalid-feedback>
-              </b-form-group>
-
+       
               <b-form-group label="Id Mecanico" label-for="id">
                 <b-form-input
                   class="form-control"
                   type="text"
+                  v-model="mantenimientos.id_mecanico"
                   required
                   placeholder="Ingrese Id Mecanico"
                   id="id"
@@ -44,23 +36,32 @@
                 <b-form-invalid-feedback :state="validacionMecanico"></b-form-invalid-feedback>
               </b-form-group>
 
-              <b-form-group
-                label-cols-sm="3"
-                label="Trabajos Realizados"
-                label-align-sm="right"
-                label-for="comentario"
-              >
-                <b-form-textarea
-                  id="textarea-large"
-                  size="lg"
-                  placeholder="Ingrese los trabajos realizados"
-                ></b-form-textarea>
+              <b-form-group label="Fecha" label-for="id">
+                <b-form-input
+                  class="form-control"
+                  type="text"
+                  v-model="mantenimientos.fecha"
+                  required
+                  placeholder="aaaa/mm/dd"
+                  id="fecha"
+                />
+                <b-form-invalid-feedback :state="validacionFecha"></b-form-invalid-feedback>
               </b-form-group>
+
+               <b-form-textarea
+                v-model="mantenimientos.trabajos_realizados"
+                id="Comentario"
+                size="lg"
+                placeholder="Trabajos Realizados"
+              ></b-form-textarea>
+              <b-form-invalid-feedback :state="validacionTrabajos"></b-form-invalid-feedback>
+              <br />
 
               <b-form-group label="Horas Invertidas" label-for="id">
                 <b-form-input
                   class="form-control"
                   type="number"
+                 v-model="mantenimientos.horas_invertidas"
                   required
                   placeholder="Ingrese las horas invertidas"
                   id="id"
@@ -84,7 +85,7 @@
             striped
             responsive
             hover
-            :items="lista_seguimiento"
+            :items="lista_mantenimientos"
             class="border border-primary text-center"
           >
             <template v-slot:cell(acciones)="row">
@@ -116,3 +117,6 @@
     </b-container>
   </div>
 </template>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../assets/mantenimientos.js"/>

@@ -25,7 +25,7 @@
                 <b-form-invalid-feedback :state="validar_Clave"
                 >Campo obligatorio</b-form-invalid-feedback>
               </b-form-group>
-              <b-button type="submit" variant="outline-danger" href="/motos">Ingresar</b-button>
+              <b-button type="submit" variant="outline-danger" href="/mantenimientos">Ingresar</b-button>
             </b-form>
           </b-card>
         </b-col>
@@ -33,3 +33,6 @@
       </b-row>
   </div>
 </template>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../assets/login.js"/>

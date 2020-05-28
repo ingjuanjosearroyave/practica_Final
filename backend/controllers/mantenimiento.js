@@ -10,7 +10,7 @@ let consultarMantenimientos = async () => {
 
 let consultarMantenimiento = async (id) => {
   let _service = new ServicioPG();
-  let sql = `SELECT * FROM mantenimientos WHERE id_mecanico = '${id}'`;
+  let sql = `SELECT * FROM mantenimientos WHERE placa = '${id}'`;
   let respuesta = await _service.ejecutarSql(sql);
   return respuesta;
 };
