@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const _controlador = require("../controllers/autenticacion");
-/*
+const _controller = require("../controllers/autenticacion");
+
 router.use((req, res, next) => {
   try {
     let url = req.url;
@@ -9,7 +9,7 @@ router.use((req, res, next) => {
       next();
     } else {
       let token = req.headers.token;
-      let verify = _controlador.validarToken(token);
+      let verify = _controller.validar_token(token);
       next();
     }
   } catch (error) {
@@ -20,19 +20,18 @@ router.use((req, res, next) => {
 router.post("/login", (req, res) => {
   try {
     let body = req.body;
-    _controlador.validarDatos(body);
-    _controlador
-      .consultarUsuario(body)
+    _controller.validar_datos(body);
+    _controller
+      .consultar_usuario(body)
       .then((answerDB) => {
         let usuario = answerDB.rowCount > 0 ? answerDB.rows[0] : undefined;
-
         if (usuario) {
-          let token = _controller.generarToken(usuario);
+          let token = _controller.generar_token(usuario);
           res.status(200).send({
             ok: true,
             info: token,
             rol: usuario.rol,
-            message: "Usuario autenticado",
+            message: "Persona autenticada",
           });
         } else {
           res.status(400).send({
@@ -50,22 +49,55 @@ router.post("/login", (req, res) => {
   }
 });
 
-router.get("/verify", (req, res) => {
+router.get("/verificar", (req, res) => {
   try {
     let token = req.headers.token;
-    let verify = _controlador.validarToken(token);
+    let verificacion = _controller.validar_token(token);
     res.status(200).send({
       ok: true,
-      info: verify,
+      info: token,
       mensaje: "Autenticado.",
     });
   } catch (error) {
     res.status(401).send({
       ok: false,
       info: error,
-      mensaje: "No autenticado.",
+      mensaje: "No Autenticado",
     });
   }
-});*/
+});
+
+router.post("/verificar", (req, res) => {
+  try {
+    let body = req.body;
+    _controller.validar_datos(body);
+    _controller
+      .consultar_usuario(body)
+      .then((respuestaDB) => {
+        let persona =
+          respuestaDB.rowCount > 0 ? respuestaDB.rows[0] : undefined;
+        if (persona) {
+          let token = _controlador.generarToken(persona);
+          res.status(200).send({
+            ok: true,
+            info: token,
+            mensaje: "Persona autenticada.",
+            rol: persona.rol,
+          });
+        } else {
+          res.status(400).send({
+            ok: false,
+            info: {},
+            mensaje: "Documento y/o clave incorrecta.",
+          });
+        }
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
 
 module.exports = router;

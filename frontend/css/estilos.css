@@ -11,15 +11,7 @@
     -moz-box-shadow: -8px 8px 26px 0px rgba(150,150,150,1);
     box-shadow: -8px 8px 26px 0px rgba(150,150,150,1);
   }
-  F
-  .title {
-    font-family: "Oswald", sans-serif;
-    margin: 20px;
-    font-size: 30px;
-    font-weight: bold;
-    color: #ED0034;
-  }
-  body {
+    body {
     background-image: url("../static/images/backgr.jpg");
     background-repeat: no-repeat;
     background-size: cover;

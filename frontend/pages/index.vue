@@ -16,16 +16,16 @@
             </b-row>
             <b-form action="javascript:void(0)">
               <b-form-group id="input-group-2" label="Usuario" label-for="input-2">
-                <b-form-input id="email" placeholder="Ingrese el documento" ></b-form-input>
-                <b-form-invalid-feedback :state="validar_Id"
+                <b-form-input id="email" placeholder="Ingrese el documento" v-model="usuario.documento"></b-form-input>
+                <b-form-invalid-feedback :state="validar_id"
                 >Campo obligatorio</b-form-invalid-feedback>
               </b-form-group>
               <b-form-group id="input-group-2" label="Contraseña"  label-for="input-2">
-                <b-form-input id="contraseña" type="password" placeholder="Contraseña">></b-form-input>
-                <b-form-invalid-feedback :state="validar_Clave"
+                <b-form-input id="contraseña" type="password" placeholder="Contraseña"   v-model="usuario.clave"></b-form-input>
+                <b-form-invalid-feedback :state="validar_clave"
                 >Campo obligatorio</b-form-invalid-feedback>
               </b-form-group>
-              <b-button type="submit" variant="dark" href="/home">Ingresar</b-button>
+              <b-button type="submit" variant="dark" @click="iniciar()">Ingresar</b-button>
             </b-form>
           </b-card>
         </b-col>
